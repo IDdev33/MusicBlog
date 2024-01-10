@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'Assets/css/Music.css' %}">
+</head>
+<body>
+
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    
+    <ul class="navbar-nav mx-auto">
+
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">News Letter</a>
+        </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+
+<!-- Header -->
+<header class="shadow-lg p-4 mb-4 d-flex align-items-center justify-content-center">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col">
+          <div class=" w-50 shadow-lg intro text-center">
+            <h1>Now playing</h1>
+            <p class="phead text-white-75"><a target="_blank" id="track-link" href="{{current_track.link}}">{{current_track.name}}</a></p>
+            <audio id="myMusic" loop>
+              <source src="/media/{{ current_track.file }}" type="audio/mpeg">
+            </audio>
+            <div class="buttons text-center">
+              <button id="previous-btn" class="btn prev rounded-circle shadow p-4 mb-4">
+                <i class="fa fa-step-backward"></i>
+              </button>
+              <button id="play-btn" class="btn play rounded-circle shadow p-4 mb-4">
+                <i class="fa fa-play-circle-o"></i>
+                <i class="fa fa-pause-circle-o"></i>
+              </button>
+              <button id="next-btn" class="btn next rounded-circle shadow p-4 mb-4">
+                <i class="fa fa-step-forward"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+<!--Articles-->
+<div class="container">
+<div class="row">
+    {% for article in Articles reversed %}
+<div class="col-xl-6">
+<div class="blog-card">
+<div class="meta">
+<div class="photo">
+<img class="artist-img" src="{{article.Image.url}}">
+</div>
+</div>
+<div class="description">
+<h2>{{article.Name}}</h2>
+<p></p>
+<p>{{article.Added_at}}</p>
+<p>{{article.Text}}</p>
+<p>
+    <div class="text-center">
+<button class="btn"><a class="rm read" target="_blank" href="{{article.Link}}">Read More</a></button>
+</div>
+</p>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+<br>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-body">
+<div id="subscribe">
+<h3 id="promo-title">Subscribe to our Newsletter!</h3>
+
+<!--Error messages-->
+{% for message in messages %}
+<h4>{{message}}</h4>
+{% endfor %}
+<form autocomplete="off" method="POST" action="" id="form">
+{% csrf_token %}
+<input required type="text" name="name" id="name" placeholder="Enter your name...">
+<input required type="email" name="email" id="email" placeholder="Enter your email..." />
+<input type="submit" id="submit" value="Subscribe" />
+</form>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<br>
+
+<!-- Copyright -->
+<footer class="bg-dark text-center text-lg-start">
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 1);">
+<p>©2023 Copyright: All Rights Reserved.</p>
+</div>
+</footer>
+<script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'Assets/js/Music.js' %}"></script>
+
+
+
+<script>
+    // Get the current track index and track indices from Django's context
+    const currentTrackIndex = parseInt("{{ current_track_index }}");
+    const trackIndices = JSON.parse('{{ track_indices|safe }}');
+  
+    // Add event listeners to the buttons
+    const previousBtn = document.getElementById('previous-btn');
+    const playBtn = document.getElementById('play-btn');
+    const nextBtn = document.getElementById('next-btn');
+  
+    previousBtn.addEventListener('click', function() {
+      const previousIndex = (currentTrackIndex - 1 + trackIndices.length) % trackIndices.length;
+      window.location.href = `/?track=${previousIndex}`;
+    });
+  
+    playBtn.addEventListener('click', function() {
+      const audio = document.getElementById('myMusic');
+      if (audio.paused) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    });
+  
+    nextBtn.addEventListener('click', function() {
+      const nextIndex = (currentTrackIndex + 1) % trackIndices.length;
+      window.location.href = `/?track=${nextIndex}`;
+    });
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

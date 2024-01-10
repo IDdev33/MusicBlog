@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Doc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'Assets/css/Artists.css' %}">
+</head>
+<body>
+    
+    <!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    
+    <ul class="navbar-nav mx-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#content">Content</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+    
+    <button
+        type="button"
+        class="btn rounded-pill btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+   
+
+     <!--Content-->     
+<article class="all-browsers shadow-lg w-75 text-center">
+<img id="header" class="img-fluid" src="{{article.Image.url}}">
+<h1>{{article.Name}}</h1>
+<article class="browser">
+    <hr>
+
+<div class="content text-center shadow-lg">
+    <h1 id="content">Original Idea</h1>
+    <p>As a fan of Synthwave music and art, I wanted to make a website dedicated for it just for the fun of it.
+        Later on I decided to turn it into a sort of blog.
+    </p>   
+
+<h1>Original Design</h1>
+
+    <p>Originally, I had a section dedicated for Synthwave artists such as Kavinsky and The Midnight, describing 
+        them in a dynamically generated page. Along with a section dedicated for music mixes. But since embedding too many 
+        youtube videos would cause the page to lag, I decided to just create a Mix model and have a youtube link field and then 
+        just show an image of the actual thumbnail.
+    </p> 
+    <h1>Why Music?</h1>  
+    <p>I don't know, I was just listening to Synthwave and just felt that the music along with the design 
+        makes me feel some type of way and just wanted to find a method to share this in the hopes that it might make 
+        other people feel the same way. 
+        Originally it was just one song which is the "Sunset beach" from the Synthwave mix but then expanded it to make it 
+        a type of basic Music player. This was accomplished using Django models and Javascript.  
+    </p>
+<h1>Difficulties</h1>
+    <p>
+        I did not really have any difficulties making this one. It's relatively simple compared to the E-commerce 
+        website since there are not many functions. Blogs might be the easiest thing to do since it's just information.
+        You make a site and then you fill it with content. Now granted there are more features and things to worry about such 
+        as SEO optimization and perhaps introducing the ability to comment and maybe link a social media account? 
+        But yea since this is not really a commercial project but more like a hub for docs with a basic music player. There's no need to implement more features. 
+    </p>
+
+
+    <h1 id="conculsion">
+        Conclusion
+    </h1>
+
+      <p>It's a short doc, but again this project is not really that complicated. Hope you had a good time reading!</p>
+    
+</div>
+</article>
+
+
+<!-- Copyright -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3">
+    <p style="color: blueviolet;">©2023 Copyright: All Rights Reserved.</p>
+    </div>
+    </footer>
+
+    <script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+    <script>
+          //Back to top button
+let mybutton = document.getElementById("btn-back-to-top");
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+    </script>
+</body>

@@ -1,0 +1,245 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Development Journey</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'Assets/css/Artists.css' %}">
+</head>
+<body>
+    
+    <!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    
+    <ul class="navbar-nav mx-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#sites">Sites</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+    
+    <button
+        type="button"
+        class="btn rounded-pill btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+   
+
+     <!--Content-->     
+<article class="all-browsers shadow-lg text-center">
+<img id="header" class="img-fluid" src="{{article.Image.url}}">
+<h1>{{article.Name}}</h1>
+<article class="browser">
+    <hr>
+<div class="content text-center shadow-lg">
+    <p>
+        Prior to me starting to learn how to program, I had a game on my laptop called "Skyrim". 
+        This game was released back in 2011 and still going on strong today thanks to the modding community. 
+        They're the only reason why it's still alive, more than a decade later. So when you install mods to it 
+        and once you have more than 100 mods installed, you're going to face problems such as random crashes,
+        FPS drops, conflicts with meshes and textures, memory issues etc.
+    </p> 
+    <p>So then you're going to need to solve these problems right? Sometimes the solution is in the first search result 
+        of a google search. Sometimes the answer might be buried in a 6 year old forum thread on like page 124 of it and sometimes
+you may not find an answer at all, instead you're gonna have to dig deep and troubleshoot your current mod list.
+In order to do that you'll need to learn some tools. There was a tool for example called Tes5 edit that allows you 
+to see the game records and it can show you what's conflicting with what. Very handy.    </p>
+<p>On some days, I'd spend probably hours trying to find the source of my problem and when I finally solve it,
+    the satisfaction and feeling of accomplishment skyrockets. It feels extremely good and because of that, I've discovered 
+    that I actually do have the patience of sitting down and looking at a screen and testing a bunch of things.
+</p>  
+<p> I mention this because when I actually started programming, I faced tons and tons of issues and bugs and problems 
+    that I had to solve in all of my projects BUT I did not actually mind it. Yes it is frustrating when something 
+    does not work but we learn best through solving these problems.  
+</p>
+
+<h1 id="sites">How I Started Coding</h1>
+<p>I got into Web Development in the summer of 2021. At that time, I was still working in OMT but I felt I needed
+    a change and in order to accomplish that, figured it would be best to get into coding because I was already 
+    tech savy and it would be the right career for me. I completed a few online courses and slowly progressed as you will see
+    below the changes from my first personal project to the latest one. 
+</p>
+
+
+
+
+
+<h1 id="sites">First Site</h1>
+<p>I remember my first day at the Bootcamp, we learned some basic css and basic html tags such as 
+    image, link, headers and paragraph tags. Came back home and started fiddling with them and I came up with a simple 
+page that lists Kid Ink's albums and I had a couple of links to his YouTube and Spotify pages:</p>
+
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/first-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/first-site1.PNG' %}">
+    </div>
+</div>
+<p>Even though it was very simple but still I was proud of myself. I kept this behavior up and continued to make
+    more sites based on the knowledge that I aquired not just from the bootcamp but also online. 
+</p>
+<h1>Second Site</h1>
+<p>For the second site, I implemented a small table and felt like I was a genius for aligning the 2 images like that: </p>
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/second-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/second-site1.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/second-site2.PNG' %}">
+    </div>
+</div>
+<h1>Third Site</h1>
+<p>The third one was a bit more complicated than the first 2 as I spent quite some time to fix the positioning 
+    of the article and the nav:
+</p>
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/third-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/third-site1.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/third-site2.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/third-site3.PNG' %}">
+    </div>
+    </div>
+<h1>Fourth Site</h1>
+<p>This one was a lot "cleaner" than the rest. It was like an article and the coolest thing that I did here 
+    was use the :before attribute in css to display gif images before the headers
+</p>
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fourth-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fourth-site1.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fourth-site2.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fourth-site3.PNG' %}">
+    </div>
+    </div>
+<p>Note: it went on for the other programming languages which were Java, C# and Ruby. </p>
+<h1>Fifth Site</h1>
+<p>The final boss of them all. A site dedicated to a place where I used to have breakfast from: Simit Sarayi in Istanbul.
+    Man that background image was the real deal:
+</p>
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fifth-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fifth-site1.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/fifth-site2.PNG' %}">
+    </div>
+    </div>
+    <p>Note: I basically listed all of their products not just coffee and simit. Stuff like cold drinks,
+        lunch, dessert etc. 
+    </p>
+<h1>Sixth Site</h1>
+<p>The first project that I've used Javascript in. The design came out to be modern and nice and it works:</p> 
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/sixth-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/sixth-site1.PNG' %}">
+    </div>   
+</div>
+<h1>Seventh Site</h1>
+<p>At this point I was basically doing the freecodecamp's 300 hour course of creating 5 responsive sites (including the portfolio)
+    to get the certificate. The link to all these sites can be found in my resume, but here's a screenshot of it:
+</p>
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/seventh-site.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/seventh-site1.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/seventh-site2.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old sites/seventh-site3.PNG' %}">
+    </div>   
+</div>
+<p>Note: During that course you actually make 20 different projects but they guide you through 15 ones and the 
+    other 5 you'll have to do on your own. It's excessive hand-holding in my opinion but it can solidify 
+    the information you learn, in your brain if you focus. 
+</p>
+<h1>Eighth Site</h1>
+<p>Alienware. I've written an article on it and provided images of how it was before, you can check it out
+    <a href="/AlienwareDoc">here</a>.
+Out of all the sites that I designed, I decided to massively expand on this one because in my opinion, 
+it had the best design and the best potential. It was a long journey but well worth it.</p>
+<h1>Other Projects</h1>
+<p>So this point, when I was learning Python and Django, I've expanded a bit and wrote a couple of 
+    python scripts here and there, nothing too fancy and also wrote 2 YouTube apps that can be found 
+    <a href="https://github.com/IDdev33/YouTube-Audio-Converter-GUI">here</a> and 
+    <a href="https://github.com/IDdev33/Youtube-Video-Downloader-GUI">here</a>.
+    After I was done with the Alienware project, I did this Blog. 
+</p>
+<h1 id="conculsion">Conclusion</h1>
+<p>Overall, I'm incredibly proud of myself for sticking through and pushing myself to learn new stuff all the time.
+    You know when we first started the bootcamp, we were 6 people. The very next day we became 4. And after around 3 
+    to 4 weeks we became just 2. The guys that left were either intimidated by programming for whatever reason 
+    or just did not understand that they had to put in some work at home and practice. At the end of the day 
+    the most efficient way to learn is to literally make projects on your own because you're gonna run into problems 
+    and when you fix these problems and understand why they occured in the first place, that's when you learn. 
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</article>
+
+
+<!-- Copyright -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3">
+    <p style="color: blueviolet;">©2023 Copyright: All Rights Reserved.</p>
+    </div>
+    </footer>
+
+    <script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+    <script>
+          //Back to top button
+let mybutton = document.getElementById("btn-back-to-top");
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+    </script>
+</body>

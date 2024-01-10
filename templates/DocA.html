@@ -1,0 +1,277 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alienware Doc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'Assets/css/Artists.css' %}">
+</head>
+<body>
+    
+    <!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    
+    <ul class="navbar-nav mx-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#features">Features</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+    
+    <button
+        type="button"
+        class="btn rounded-pill btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+   
+
+     <!--Content-->     
+<article class="all-browsers shadow-lg w-75 text-center">
+<img id="header" class="img-fluid" src="{{article.Image.url}}">
+<h1>{{article.Name}}</h1>
+<article class="browser">
+    <hr>
+<div class="content text-center shadow-lg">
+    <h1>Original Idea</h1>
+    <p>We had an assignment to create an E-commerce website when we were learning Javascript
+        and use that to implement functions like "Add to cart", increase the quantity of an item,
+        remove it from the cart etc. I sat there for a while trying to think of the main theme of the design
+        and what kinds of products should I put there. An image of a white Alienware laptop popped off 
+        in my head and I decided to just design an Alienware themed website.   
+    </p>   
+
+<h1>Original Design</h1>
+
+    <p>Below you can see the old design when I first made the website:</p>   
+
+<div class="row">
+    <div class="col-12">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old-header.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old-intro.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old-product.PNG' %}">
+        <img class="img-fluid" src="{% static 'Assets/imgs/old-cart.PNG' %}">
+    </div>
+</div>
+
+    <p>As you can see it was pretty basic and simple. You just press on "Add to cart" scroll down and your item
+        would be in the cart. The Checkout button was a modal button that simply thank you for your purchase.
+        Now over time, when we got into the back-end, I picked this specific website to expand on and gradually introduced 
+        new features and styling which I'm going to talk about below. 
+    </p>   
+
+<h1 id="features">First Feature: Account Creation</h1>
+
+    <p>The first feature that I introduced was the account creation. Register, Log In and Log out.
+        I discovered later on that there was actually a module for Django called "allauth" which handles this
+        and even gives you support for connecting your social media account like Google or Facebook etc. But decided 
+        not to use it and just stick to my code instead.
+    </p>
+    <p>The actual implementation is fairly easy enough. First you need a form, you can use Django's built-in form or
+        just make one in an html file, then you'd write the views (functions) for the registration, logging in and logging out.
+        Personally, I designed 2 additional pages, routed them to urls and then wrote the views. For the views the first 
+        thing you have to do is make an if statement that checks if request.method = 'POST' and the reason for that is because 
+        we want the functions to initiate once the user submits the form, otherwise we can simply render the actual page.
+    </p>
+    <p>Then inside this if statement, we grab the values of the form fields through the name attribute and assign 
+        them to variables and then we write additional checks to first see if the passwords match (obviously we need 2 input fields for that in the form)
+        and then we check to see if the username exists in the database through a built-in Django function called exists(), the same 
+        thing for the email and then if everything is clear then we simply create a new object in the built-in Users model 
+        and we assign its fields to the variables we created earlier. 
+    </p>
+    <p>For the log in we again put the whole view inside an if request.method = 'POST' statement like before
+        and then we grab the value of the form fields, check if the username and password match 
+    with a User object in the database by saying auth.authenticate(username=username, password=password)
+first username is the actual field of the User model and the second is the variable that stores the value 
+of the form field. Same thing for the passwords. 
+ </p> 
+ <p>Then we simply say if the user exists then we call for the auth.login(request,user) method and redirect the user to the homepage.
+    If not (if the fields do not match) we display a message that says either the username or the password is incorrect.
+    Logging out is very simple. The entire view is just saying  auth.logout(request) and then we redirect the user back to the homepage.
+    And that's all for the account creation!
+ </p>  
+
+<h1>Second Feature: Categories and More Products</h1>
+
+    <p>At this point, I wanted to "expand the stock" and display more products on the website. 
+        Figured a Category model would be nice so that's what I did. Models are python classes that you can write 
+        in a file called models.py. They're very useful and can solve a lot of problems. After you declare a model, you'd need 
+        to run 2 codes in the termminal, first is makemigrations and the second is migrate. This simply applies the changes 
+        to the database. Then you'd need to register that model in the admin.py file. 
+    </p>
+    <p>So I created a Product model, which had fields like name, price, image, stock, reviews etc and then created 
+        a Category model and connected them through foreign key relationship. So now it was a matter of grabbing images 
+        from the official Dell site, editing them in Photoshop o remove the background and resize them and just 
+        add objects to this Product model. 
+        I've also designed a couple of pages and decided to give every category its own page to make it organized and clean.
+    </p>  
+
+<h1>Third Feature: Profile</h1>
+
+    <p>
+        So by this time, I decided to add a profile function which would serve a purpose of simply storing information
+        for future use. The idea was, you can create an account, go to your profile and add additional info about yourself 
+        that would be retrieved when you proceed to the checkout page and that way you would not have to write it again.
+        But for guest users, the profile would be unavailable and the link that leads you to it would be hidden. 
+        
+    </p>
+    <p>Actual implementation is similar to the account creation, we design a profile page that has a form, route it to a url,
+        write a view and we also create a new Profile model so that we can store the info inside it. 
+        Again you would want to first check if the method is = 'POST'. But first, we'd need to create a variable
+        that stores the current user. For example user = request.user and then we use try and except blocks to safely 
+        check if this user is associated with a profile and if not we simply set it to None. If we don't do that,
+        we'll get a traceback. 
+    </p>
+    <p>Afterwards we put the logic in the if statement, save the info from the fields, create a new Profile object and then
+        we can display message to inform the user that the profile was updated and then redirect them back to home. 
+    </p>
+
+<h1>Fourth Feature: Proper Shopping Cart</h1>
+
+    <p>
+        The bulk of the errors, frustration, bugs and problems happened during this phase. But suffering is a catalyst 
+        for growth and I'm very grateful to all the problems that I've encountered because they taugh me so much and that's the real 
+        beauty of making a project and dedicating time and effort into it especially if it's a complicated one. 
+        You can learn much more that way.
+    </p>
+    <p>
+        So anyways, I've tried multiple approaches over time to tackle this task. But the very first thing 
+        that I did was visualize myself going to the supermarket and grabbing an item from the shelf inside an isle,
+        proceed to the cashier, pay for it, get a receipt and go. Then I broke down this visualization:
+        Grabbing an item form the shelf = "Add to cart" but now that I personally have this item, I can either return it, 
+        increase its quantity or simply leave it in the cart and browse other items.
+    </p>
+    <p>This item inside my cart should no longer be associated with the products on the shelf even though
+        it inherits the info and everything but still it is separated now. This will make sense in a moment. 
+        At this point I can get other items, add them to the cart and do whatever and go crazy. And obviously checking out 
+        is self explanatory. 
+    </p>
+    <p>So let's translate all that into actual code. First we need a Customer model. Then we need an Order model. This model represents 
+        the cart basically, then we need a model for the actual items inside the cart, we can call that for example OrderItem. 
+        That way we can save whatever product in the cart and then manipulate it however we wish. After that we should create 2 models, Customer 
+        and Guest User. Now regarding guest users, this is just one way of handling them. Personally I experimented with 
+        sessions and cookies to handle their case but found it best to just create a model for them instead. The Customer model
+        is a core aspect of this and it's easier to just link up Customer and Guest User. 
+    </p>
+    <p>
+        Next is writing the code. Now for this, instead of copying and pasting the same code in different views,
+        we can write just one and then simply call it in other views. This function should be the function responsible 
+        for handling the data inside the cart and then when we call it in different views or pages and that way the cart would 
+        always be updated. In the fucntion that I wrote, I first checked if the user is authenticated or a guest and then we proceed 
+        forward depending on the result. It's generally the same for both of them, we wanna create Customer instances 
+        for both, Order objects for both and we wanna loop through the items they have in their cart.   
+    </p>
+    <p>One thing I forgot to mention is that in the Order model and the OrderItem model, we wanna define functions that 
+        actually calculate the total. In the case of the former, we want a function that calculates the total of all items and 
+        in the case of the latter we want a fucntion that calculates the total of one item since an item can have multiple 
+        quantities then we can simply say in that function total = self.price * self.quantity for example. 
+        How do we actually update the cart in real time? That's where APIs come into play.
+    </p>
+
+    <h1>APIs</h1>
+    <div class="row">
+        <div class="col-12">
+            <img class="img-fluid" src="{% static 'Assets/imgs/rest.PNG' %}">
+        </div>
+    </div>
+
+        <p>
+            Originally I was utilizing Javascript to reload the page everytime something was manipulated in the cart 
+            using the location.reload() code. One could argue that it was not really that bad because the cart was located at its own page.
+            Therefore there was not a lot of resources to be loaded which means the reload won't really be that noticeable. But still 
+            I was not satisfied therefore I decided to change it to make API calls instead through Javascript and that 
+            way everything would be updated instantly without the need of a reload.
+        </p>
+        <p>
+            Django's Rest framework allows you to utilize and make APIs. The process is not that complicated, you first isntall it,
+            make some few configurations in the settings.py file and then you can get started. If I wanted to make an API that can show you the products that I had,
+            I'd create a serializer for the Product model, specifiy which fields I want to show and then it's a simple matter of writing the 
+            API view. We'd need to specify at the start of the view the permissions regarding the API. You can make it accessible 
+            to admin users only, authenticated users only or accessible to everybody. 
+        </p>
+        <p>In our case, it should be accessible to everybody. Although I did create another API that can show you the products 
+            but available to admin users only. When you set permissions on it, you'd then need a token for it which you can generate 
+            for any user using a cmd line. 
+        </p>
+        <p>After the API was created, we can then proceed with making the Javascript function that can make calls to this API
+            according to what the user did with the interface. 
+        </p>
+
+    <h1>Fifth Feature: Receipt</h1>
+
+       <p>I've had this idea since the original design. I implemented it around the end of the project and I remember 
+        encoutering a big problem. The problem was, the receipt page would be basically the final destination for the user.
+        Before it was the checkout. So in the checkout view, I was trying to save the order information inside a variable 
+        and then make a request from the receipt view to the checkout view to retrieve this variable and then simply render it 
+        in the template. Problem was the variable was empty. Why is that? It was because in the Order model, we have a field called complete
+        which is a boolean field. In the checkout view when the order is supposed to be finished then we set this complete field 
+        to be True (because it's False by default) and then the cart would become empty and the Order would be zeroed.
+       </p>
+       <p>So then I figured I could just make a Receipt model, store the info in it before the completion of the order
+        and simply render it out in the receipt.html page. 
+       </p>
+ 
+    <h1 id="conculsion">
+        Conclusion
+    </h1>
+
+       Sharing every single problem and bug I encountered would make this doc too long. This project took months
+       and it taught me so much. I hope you've enjoyed reading my experience with it!
+</div>
+</article>
+
+
+<!-- Copyright -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3">
+    <p style="color: blueviolet;">©2023 Copyright: All Rights Reserved.</p>
+    </div>
+    </footer>
+
+    <script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+    <script>
+          //Back to top button
+let mybutton = document.getElementById("btn-back-to-top");
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+    </script>
+</body>

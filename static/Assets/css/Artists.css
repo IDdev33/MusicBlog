@@ -1,0 +1,122 @@
+html {
+    scroll-behavior: smooth;
+  }
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  /* Image */
+  #header{
+    width: 100%;
+  }
+  
+  /* NavBar Section */
+
+
+
+.navbar{
+  background-image: linear-gradient(to right, #D1E2F6 0%, indigo 50%, #D1E2F6 100%);
+  }
+  .nav-link{
+  color: white!important;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  }
+  
+  
+  
+  /* Buttons Styling */
+  .btn{
+    border: 1px solid blueviolet;
+    color: black;
+    font-size: 18px;
+  }
+  .btn:hover{
+    background-color: blueviolet;
+    color: white;
+    transition: 0.5s;
+  }
+  #btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    background-color: blueviolet;
+    right: 20px;
+    display: none;
+    z-index: 9999;
+    width: 70px;
+    height: 70px;
+    font-size: 25px;
+  }
+  #btn-back-to-top:hover{
+    color: white;
+    transition: 0.8s;
+  }
+  
+  
+
+  /* Article Styling */
+  .all-browsers {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    width: 80%;
+    background-color: ghostwhite;
+  }
+  .content{
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  p{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    margin: 20px;
+  }
+  .all-browsers > h1, .browser {
+    margin: 10px;
+    padding: 5px;
+  }
+  h1{
+    color: blueviolet;
+    padding: 5px;
+  }
+  .browser > p{
+    font-size: 18px;
+    font-family: sans-serif;
+  }
+  a{
+    color: blueviolet;
+  }
+  a:hover{
+    color: blueviolet;
+  }
+  
+  /* Responsive Design */
+  @media (min-width:350px) and (max-width: 600px){
+   .all-browsers{
+    width: 100%!important;
+   }
+   p{
+   
+    padding: 3px;
+    font-size: 16px;
+    margin-bottom: 15px;
+   }
+    
+  }
+  @media (min-width: 601px) and (max-width: 1024px){
+   
+      .intro{
+        margin: 0 auto;
+        font-size: 14px;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        }
+     
+  }

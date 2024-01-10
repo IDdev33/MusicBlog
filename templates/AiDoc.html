@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Doc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'Assets/css/Artists.css' %}">
+</head>
+<body>
+    
+    <!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    
+    <ul class="navbar-nav mx-auto">
+    <li class="nav-item active">
+    <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#content">Content</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+    
+    <button
+        type="button"
+        class="btn rounded-pill btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+   
+
+     <!--Content-->     
+<article class="all-browsers shadow-lg w-75 text-center">
+<img id="header" class="img-fluid" src="{{article.Image.url}}">
+<h1>{{article.Name}}</h1>
+<article class="browser">
+    <hr>
+<div id="content" class="content text-center shadow-lg">
+    <p>At first I remember all the doomers, clickbaiting people on YouTube and other social media 
+        and claiming that A.I is gonna replace programmers. For a minute, I too believed it but after experimenting 
+        with ChatGPT, I quickly realized it's still very limited and we probably have like 4 or 5 years 
+        until the A.I overlords replace everybody.
+    </p> 
+    <p>Hell it's not just programmers. Artists, Lawyers, Health experts, even Music artists are in danger 
+        if it keeps advancing. You can literally tell ChatGPT to write you a Drake verse and it'd do it in like 
+    5 seconds. So now Ghost writers are going bankrupt too. But on a serious note it's a very useful tool. Let 
+me tell you my experience with it.  </p>  
+<h1>Helps with Debbuging Code</h1>
+<p>One of its most useful features in my opinion. If you write a block of code and you forgot a comma or a quote perhaps,
+    instead of staring at the code for 5 hours, what you can do is simply copy your code and paste it in ChatGPT's prompt
+and it'd tell you where the mistake is. This saved me so much time honestly.</p>
+<h1>It can produce buggy code</h1>
+<p>You have to be careful with this. If you blindly copy paste code from it, unless your project was 
+    to get the sum of 1+1, then chances are it'll mess up your entire project. In my experience there were several 
+    times when it made a reference to an element that did not exist, wrote code in a very complicated way when there was 
+    a more simple way and even just created more bugs.
+</p>
+<h1>Struggles with Creativity</h1>
+<p>This is one of the reasons why it has not replaced programmers yet. It does not have creativity and cannot 
+    think like we do because obviously it's a language model. Like there was a time when I was struggling 
+with the receipt function in the Alienware website. But then I had an epiphany to simply create a model 
+and just save the info in the database. No amount of carefully structured queries made ChatGPT suggest this 
+to me.</p>
+<h1>Explains stuff really good</h1>
+<p>Again one of its strongest points. If you wanted to understand how API calls in Javascript work and what each 
+    of the syntax means, then it's the right bot for you. Instead of watching a YouTube video, you can easily get info from it.
+    And also being trained on such a massive amount of data, if you have an idea for a feature but don't know if it's 
+    even possible in the first place, it can help you with that and will actually lay out all the steps to achieve it.
+</p>
+<h1>MidJourney is something else</h1>
+<p>It's basically Dalle on steroids. Super awesome for generating creative images. I have not actually used it yet 
+    because I know you have to join their discord which I simply refuse to use, due to all the memes about their mods,
+    but I have seen the work it can do and it's absolutely astonishing. Animators use it to make incredible 
+    art. 
+</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Overall, A.I tools are super helpful but just like anything out there, you have to be careful with it. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</article>
+
+
+<!-- Copyright -->
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3">
+    <p style="color: blueviolet;">©2023 Copyright: All Rights Reserved.</p>
+    </div>
+    </footer>
+
+    <script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+    <script>
+          //Back to top button
+let mybutton = document.getElementById("btn-back-to-top");
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+    </script>
+</body>

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{Artists.Name}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'Assets/css/Artists.css' %}">
+</head>
+<body>
+   
+
+     <!--Content-->     
+<article class="all-browsers w-75 text-center">
+<img id="header" class="img-fluid" src="{{Artists.Image.url}}">
+<h1>{{Artists.Name}}</h1>
+<article class="browser">
+<p>{{Artists.Added_at}}</p>
+<p>{{Artists.Text}}</p>
+         <iframe width="560" height="315" src="{{Artists.Youtube_Video}}" 
+         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+          clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           allowfullscreen></iframe>
+  <br>
+  <br>
+
+<p>Follow Them On Social Media</p>
+
+<p>  <a href="{{Artists.Facebook_Link}}" class="fa fa-facebook" target="_blank"></a>
+     <a href="{{Artists.Youtube_Channel_Link}}" class="fa fa-youtube" target="_blank"></a>
+     <a href="{{Artists.Twitter_Link}}" class="fa fa-twitter" target="_blank"></a>
+     <a href="{{Artists.Spotify_Link}}" class="fa fa-spotify" target="_blank"></a>
+
+</p>
+     <button class="btn"><a style="all: unset;" href="/">Home</a></button>
+</article>
+
+    <script src="{% static 'Assets/js/bootstrap.min.js' %}"></script>
+</body>
