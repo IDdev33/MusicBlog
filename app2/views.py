@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Subscriber, Article, Track
+from .models import Subscriber, Article
 from django.contrib import messages
 
 
@@ -7,17 +7,9 @@ from django.contrib import messages
 
 # Home
 def index(request):
-     Tracks = Track.objects.all()
      Articles = Article.objects.all()
-     track_indices = list(range(Track.objects.count()))
-     current_track_index = int(request.GET.get('track', 0))
-     current_track = Track.objects.all()[current_track_index]
      context ={
-          'Tracks': Tracks,
           'Articles': Articles,
-          'current_track': current_track,
-          'current_track_index': current_track_index,
-          'track_indices': track_indices
      }
 
      if request.method == 'POST':

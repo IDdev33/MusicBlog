@@ -38,20 +38,14 @@
         <div class="col">
           <div class=" w-50 shadow-lg intro text-center">
             <h1>Now playing</h1>
-            <p class="phead text-white-75"><a target="_blank" id="track-link" href="{{current_track.link}}">{{current_track.name}}</a></p>
+            <p class="phead text-white-75"><a target="_blank" id="track-link" href="https://www.youtube.com/watch?v=HWnsI7vZoAA">Sun Set Synthwave</a></p>
             <audio id="myMusic" loop>
-              <source src="/media/{{ current_track.file }}" type="audio/mpeg">
+              <source src="static/Assets/SunSetSynthwave.mp3" type="audio/mpeg">
             </audio>
             <div class="buttons text-center">
-              <button id="previous-btn" class="btn prev rounded-circle shadow p-4 mb-4">
-                <i class="fa fa-step-backward"></i>
-              </button>
               <button id="play-btn" class="btn play rounded-circle shadow p-4 mb-4">
                 <i class="fa fa-play-circle-o"></i>
                 <i class="fa fa-pause-circle-o"></i>
-              </button>
-              <button id="next-btn" class="btn next rounded-circle shadow p-4 mb-4">
-                <i class="fa fa-step-forward"></i>
               </button>
             </div>
           </div>
@@ -133,36 +127,7 @@
 
 
 
-<script>
-    // Get the current track index and track indices from Django's context
-    const currentTrackIndex = parseInt("{{ current_track_index }}");
-    const trackIndices = JSON.parse('{{ track_indices|safe }}');
-  
-    // Add event listeners to the buttons
-    const previousBtn = document.getElementById('previous-btn');
-    const playBtn = document.getElementById('play-btn');
-    const nextBtn = document.getElementById('next-btn');
-  
-    previousBtn.addEventListener('click', function() {
-      const previousIndex = (currentTrackIndex - 1 + trackIndices.length) % trackIndices.length;
-      window.location.href = `/?track=${previousIndex}`;
-    });
-  
-    playBtn.addEventListener('click', function() {
-      const audio = document.getElementById('myMusic');
-      if (audio.paused) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-    });
-  
-    nextBtn.addEventListener('click', function() {
-      const nextIndex = (currentTrackIndex + 1) % trackIndices.length;
-      window.location.href = `/?track=${nextIndex}`;
-    });
-  </script>
-  
+
 
 
 
