@@ -11,7 +11,6 @@ class Subscriber(models.Model):
 class Article(models.Model):
     Image = models.ImageField(upload_to='images/')
     Name = models.CharField(max_length=50)
-    Added_at = models.DateTimeField(default=datetime.now, blank=True)
     Link = models.CharField(max_length=100)
     Text = models.CharField(max_length=100)
     
